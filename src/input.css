@@ -7,17 +7,6 @@
   background: transparent;
 }
 
-@layer utilities {
-  @keyframes cloud-flow {
-    0%   { background-position:   0%  0%; }
-    50%  { background-position:  50% 10%; }
-    100% { background-position:   0%  0%; }
-  }
-
-  .cloud-animation {
-    animation: cloud-flow 80s ease-in-out infinite;
-  }
-}
 
 /* body */
 @layer base {
@@ -82,6 +71,7 @@
     animation: title-bounce 8s linear infinite;
   }
 }
+
 
 
 /* bottom-ticker animation */
