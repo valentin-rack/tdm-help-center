@@ -7,9 +7,7 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --color-red-500: oklch(63.7% 0.237 25.331);
     --color-neutral-300: oklch(87% 0 0);
-    --color-neutral-600: oklch(43.9% 0 0);
     --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
@@ -174,23 +172,11 @@
   .flex {
     display: flex;
   }
-  .table {
-    display: table;
-  }
   .min-h-screen {
     min-height: 100vh;
   }
   .w-full {
     width: 100%;
-  }
-  .border-collapse {
-    border-collapse: collapse;
-  }
-  .transform {
-    transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
-  }
-  .resize {
-    resize: both;
   }
   .flex-col {
     flex-direction: column;
@@ -198,34 +184,27 @@
   .items-center {
     align-items: center;
   }
-  .gap-2 {
-    gap: calc(var(--spacing) * 2);
-  }
   .gap-2\.5 {
     gap: calc(var(--spacing) * 2.5);
   }
   .overflow-hidden {
     overflow: hidden;
   }
-  .border {
-    border-style: var(--tw-border-style);
-    border-width: 1px;
+  .border-b {
+    border-bottom-style: var(--tw-border-style);
+    border-bottom-width: 1px;
   }
-  .border-y {
-    border-block-style: var(--tw-border-style);
-    border-block-width: 1px;
-  }
-  .border-neutral-300 {
-    border-color: var(--color-neutral-300);
-  }
-  .border-neutral-600 {
-    border-color: var(--color-neutral-600);
-  }
-  .border-red-500 {
-    border-color: var(--color-red-500);
+  .border-black\/50 {
+    border-color: color-mix(in srgb, #000 50%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-black) 50%, transparent);
+    }
   }
   .bg-black {
     background-color: var(--color-black);
+  }
+  .bg-transparent {
+    background-color: transparent;
   }
   .bg-cover {
     background-size: cover;
@@ -233,11 +212,11 @@
   .bg-no-repeat {
     background-repeat: no-repeat;
   }
-  .pt-\[1px\] {
-    padding-top: 1px;
+  .py-1 {
+    padding-block: calc(var(--spacing) * 1);
   }
-  .font-\[\'Press_Start_2P\'\] {
-    font-family: 'Press Start 2P';
+  .font-\[\'Archivo_Black\'\] {
+    font-family: 'Archivo Black';
   }
   .font-\[Consolas\] {
     font-family: Consolas;
@@ -246,14 +225,21 @@
     font-size: var(--text-xs);
     line-height: var(--tw-leading, var(--text-xs--line-height));
   }
-  .text-\[9px\] {
-    font-size: 9px;
+  .text-\[10vw\] {
+    font-size: 10vw;
   }
-  .text-\[10px\] {
-    font-size: 10px;
+  .leading-none {
+    --tw-leading: 1;
+    line-height: 1;
   }
   .whitespace-nowrap {
     white-space: nowrap;
+  }
+  .text-black\/50 {
+    color: color-mix(in srgb, #000 50%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      color: color-mix(in oklab, var(--color-black) 50%, transparent);
+    }
   }
   .text-neutral-300 {
     color: var(--color-neutral-300);
@@ -261,12 +247,9 @@
   .text-white {
     color: var(--color-white);
   }
-  .underline {
-    text-decoration-line: underline;
-  }
-  .outline {
-    outline-style: var(--tw-outline-style);
-    outline-width: 1px;
+  .select-none {
+    -webkit-user-select: none;
+    user-select: none;
   }
 }
 @layer base {
@@ -287,46 +270,45 @@
     animation: infinite-scroll 60s linear infinite;
   }
 }
-@property --tw-rotate-x {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-rotate-y {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-rotate-z {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-skew-x {
-  syntax: "*";
-  inherits: false;
-}
-@property --tw-skew-y {
-  syntax: "*";
-  inherits: false;
+@layer utilities {
+  @keyframes title-bounce {
+    0% {
+      transform: translateX(0);
+    }
+    10% {
+      transform: translateX(0);
+    }
+    45% {
+      transform: translateX(-6%);
+    }
+    55% {
+      transform: translateX(-6%);
+    }
+    90% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+  .title-bounce {
+    animation: title-bounce 8s linear infinite;
+  }
 }
 @property --tw-border-style {
   syntax: "*";
   inherits: false;
   initial-value: solid;
 }
-@property --tw-outline-style {
+@property --tw-leading {
   syntax: "*";
   inherits: false;
-  initial-value: solid;
 }
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
-      --tw-rotate-x: initial;
-      --tw-rotate-y: initial;
-      --tw-rotate-z: initial;
-      --tw-skew-x: initial;
-      --tw-skew-y: initial;
       --tw-border-style: solid;
-      --tw-outline-style: solid;
+      --tw-leading: initial;
     }
   }
 }

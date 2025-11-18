@@ -26,3 +26,65 @@
   }
 
 }
+
+
+/* title animation */
+/* @layer utilities {
+  @keyframes title-bounce {
+    0% {
+      transform: translateX(0);
+    }
+    10% {
+      transform: translateX(0);   
+    }
+    90% {
+      transform: translateX(-50%); 
+    }
+    100% {
+      transform: translateX(-50%); 
+    }
+  }
+
+  .title-bounce {
+    animation: title-bounce 8s linear infinite;
+  }
+} */
+
+
+@layer utilities {
+  @keyframes title-bounce {
+    /* Parte 1: posición inicial (todo visible) */
+    0% {
+      transform: translateX(0);
+    }
+
+    /* Pausa en borde izquierdo (1 segundo) */
+    10% {
+      transform: translateX(0);
+    }
+
+    /* Parte 2: movimiento hacia la izquierda (revelar texto oculto) */
+    45% {
+      transform: translateX(-6%);
+    }
+
+    /* Pausa en borde derecho (1 segundo) */
+    55% {
+      transform: translateX(-6%);
+    }
+
+    /* Parte 3: regreso hacia la derecha (ocultar otra vez) */
+    90% {
+      transform: translateX(0);
+    }
+
+    /* Pausa final antes de repetir */
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  .title-bounce {
+    animation: title-bounce 8s linear infinite;
+  }
+}
