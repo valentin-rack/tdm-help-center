@@ -1,1 +1,28 @@
 @import "tailwindcss";
+
+
+
+/* body */
+@layer base {
+  body {
+    @apply font-[Arial_Narrow];
+  }
+}
+
+
+/* text ticker animation */
+@layer utilities {
+  @keyframes infinite-scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-50% - 5px));
+    }
+  }
+
+  .ticker {
+    animation: infinite-scroll 60s linear infinite;
+  }
+
+}
