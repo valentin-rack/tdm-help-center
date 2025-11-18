@@ -6,7 +6,6 @@ const icon = document.getElementById("menuIcon");
 
 btn.addEventListener("click", () => {
   content.classList.toggle("hidden");
-
   // Cambiar flecha ▼ ▲
   icon.textContent = content.classList.contains("hidden") ? "▼" : "▲";
 });
@@ -24,7 +23,7 @@ links.forEach(link => {
   }
 });
 
-// Padding del Main
+// Padding-top del Main
 function updateMainPadding() {
     const header = document.querySelector("header");
     const main = document.querySelector("main");

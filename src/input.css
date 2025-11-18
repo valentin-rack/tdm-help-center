@@ -1,18 +1,39 @@
 @import "tailwindcss";
 
 
+/* Ocultar scrollbar en navegadores modernos */
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+}
+
+@layer utilities {
+  @keyframes cloud-flow {
+    0%   { background-position:   0%  0%; }
+    50%  { background-position:  50% 10%; }
+    100% { background-position:   0%  0%; }
+  }
+
+  .cloud-animation {
+    animation: cloud-flow 80s ease-in-out infinite;
+  }
+}
 
 /* body */
 @layer base {
+  ::selection {
+    background: rgb(74, 74, 74);
+    color: rgb(203, 203, 203);
+  }
   body {
-    @apply font-[Arial_Narrow];
+    @apply font-['arial-narrow'];
   }
 }
 
 
-/* text ticker animation */
+/* top-ticker animation */
 @layer utilities {
-  @keyframes infinite-scroll {
+  @keyframes infinite-scroll-left {
     0% {
       transform: translateX(0);
     }
@@ -21,8 +42,8 @@
     }
   }
 
-  .ticker {
-    animation: infinite-scroll 25s linear infinite;
+  .ticker-top {
+    animation: infinite-scroll-left 25s linear infinite;
   }
 
 }
@@ -60,4 +81,22 @@
   .title-bounce {
     animation: title-bounce 8s linear infinite;
   }
+}
+
+
+/* bottom-ticker animation */
+@layer utilities {
+  @keyframes infinite-scroll-right {
+    0% {
+      transform: translateX(calc(-50% - 5px)); /* empieza fuera por la izquierda */
+    }
+    100% {
+      transform: translateX(0); /* termina en su posición normal */
+    }
+  }
+
+  .ticker-bottom {
+    animation: infinite-scroll-right 25s linear infinite;
+  }
+
 }
