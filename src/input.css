@@ -22,7 +22,7 @@
   }
 
   .ticker {
-    animation: infinite-scroll 60s linear infinite;
+    animation: infinite-scroll 25s linear infinite;
   }
 
 }

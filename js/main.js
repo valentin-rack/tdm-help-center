@@ -23,3 +23,18 @@ links.forEach(link => {
     link.classList.add("text-red-500");
   }
 });
+
+// Padding del Main
+function updateMainPadding() {
+    const header = document.querySelector("header");
+    const main = document.querySelector("main");
+
+    const headerHeight = header.offsetHeight;
+    main.style.paddingTop = headerHeight + "px";
+}
+
+// ejecutar al cargar
+window.addEventListener("load", updateMainPadding);
+
+// ejecutar cuando se redimensiona
+window.addEventListener("resize", updateMainPadding);
